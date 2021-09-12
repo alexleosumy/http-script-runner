@@ -40,9 +40,13 @@ jobs:
       run: echo ${GITHUB_REF##*/}
       
 
-    - name: 'Upload Artifact'
-      uses: actions/upload-artifact@v2
+    - uses: ncipollo/release-action@v1
       with:
-        name: http-script-runner
-        path: ./artifact/http-script-runner_${GITHUB_REF##*/}_linux_amd64.tar.gz 
+        artifacts: "artifact/http-script-runner_${GITHUB_REF##*/}_linux_amd64.tar.gz"
+
+#    - name: 'Upload Artifact'
+#      uses: actions/upload-artifact@v2
+#      with:
+#        name: http-script-runner
+#        path: ./artifact/http-script-runner_${GITHUB_REF##*/}_linux_amd64.tar.gz 
       
