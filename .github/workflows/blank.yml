@@ -44,5 +44,5 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: http-script-runner
-        path: artifact/http-script-runner_${GITHUB_REF##*/}_linux_amd64.tar.gz 
+        path: ./artifact/http-script-runner_${GITHUB_REF##*/}_linux_amd64.tar.gz 
       
