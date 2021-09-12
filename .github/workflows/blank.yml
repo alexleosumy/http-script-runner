@@ -28,8 +28,10 @@ jobs:
 #        go vet .
 #        golint .
 
+    - run: mkdir artifact
+    
     - name: 'Tar files'
-      run: tar -cvzf http-script-runner_${GITHUB_REF##*/}_linux_amd64.tar.gz script-exporter
+      run: tar -cvzf artifact/http-script-runner_${GITHUB_REF##*/}_linux_amd64.tar.gz script-exporter
     
     - name: 'ls'
       run: ls -l
@@ -42,9 +44,5 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: http-script-runner
-        path: ./http-script-runner_${GITHUB_REF##*/}_linux_amd64.tar.gz 
-        
-#    - uses: actions/upload-artifact@v2
-#      with:
-#        name: http-script-runner_${GITHUB_REF#refs/*/}_linux_amd64.tar.gz
-#        path: script-exporter
+        path: artifact/http-script-runner_${GITHUB_REF##*/}_linux_amd64.tar.gz 
+      
