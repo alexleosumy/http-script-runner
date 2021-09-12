@@ -28,10 +28,10 @@ jobs:
 #        go vet .
 #        golint .
 
-    - run: mkdir artifact
+#    - run: mkdir artifact
     
     - name: 'Tar files'
-      run: tar -cvzf artifact/http-script-runner_${GITHUB_REF##*/}_linux_amd64.tar.gz script-exporter
+      run: tar -cvzf http-script-runner_${GITHUB_REF##*/}_linux_amd64.tar.gz script-exporter
     
     - name: 'ls'
       run: ls -l
@@ -42,7 +42,7 @@ jobs:
 
     - uses: ncipollo/release-action@v1
       with:
-        artifacts: "artifact/http-script-runner_${GITHUB_REF##*/}_linux_amd64.tar.gz"
+        artifacts: "http-script-runner_${GITHUB_REF##*/}_linux_amd64.tar.gz"
 
 #    - name: 'Upload Artifact'
 #      uses: actions/upload-artifact@v2
