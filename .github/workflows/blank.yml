@@ -29,13 +29,13 @@ jobs:
 #        golint .
 
     - name: 'Tar files'
-      run: tar -cvzf http-script-runner_${GITHUB_REF#refs/*/}_linux_amd64.tar.gz script-exporter
+      run: tar -cvzf http-script-runner_${GITHUB_REF##*/}_linux_amd64.tar.gz script-exporter
 
     - name: 'Upload Artifact'
       uses: actions/upload-artifact@v2
       with:
         name: http-script-runner
-        path: http-script-runner_${GITHUB_REF#refs/*/}_linux_amd64.tar.gz 
+        path: http-script-runner_${GITHUB_REF##*/}_linux_amd64.tar.gz 
         
 #    - uses: actions/upload-artifact@v2
 #      with:
