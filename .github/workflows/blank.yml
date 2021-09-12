@@ -30,6 +30,13 @@ jobs:
 
     - name: 'Tar files'
       run: tar -cvzf http-script-runner_${GITHUB_REF##*/}_linux_amd64.tar.gz script-exporter
+    
+    - name: 'ls'
+      run: ls -l
+    
+    - name: 'show release'
+      run: echo ${GITHUB_REF##*/}
+      
 
     - name: 'Upload Artifact'
       uses: actions/upload-artifact@v2
