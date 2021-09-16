@@ -29,15 +29,15 @@ jobs:
     - name: 'Tar files'
       run: tar -cvzf http-script-runner_${{ env.RELEASE_VERSION }}_linux_amd64.tar.gz script-exporter
     
-    - name: Upload artifact
-      uses: actions/upload-artifact@v2
-      with:
-          name: http-script-runner
-          path: http-script-runner_${{ env.RELEASE_VERSION }}_linux_amd64.tar.gz
-          
-#    - name: Upload to release
-#      uses: JasonEtco/upload-to-release@master
+#    - name: Upload artifact
+#      uses: actions/upload-artifact@v2
 #      with:
-#        args: http-script-runner_${{ env.RELEASE_VERSION }}_linux_amd64.tar.gz application/tar+gzip
-#      env:
-#        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}     
+#          name: http-script-runner
+#          path: http-script-runner_${{ env.RELEASE_VERSION }}_linux_amd64.tar.gz
+          
+    - name: Upload to release
+      uses: JasonEtco/upload-to-release@master
+      with:
+        args: http-script-runner_${{ env.RELEASE_VERSION }}_linux_amd64.tar.gz application/tar+gzip
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}     
