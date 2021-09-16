@@ -28,30 +28,32 @@ jobs:
 #        go vet .
 #        golint .
 
-    - run: mkdir artifact
+#    - run: mkdir artifact
     
-#    - name: 'Tar files'
-#      run: tar -cvzf http-script-runner_${GITHUB_REF##*/}_linux_amd64.tar.gz script-exporter
+    - name: 'Tar files'
+      run: tar -cvzf http-script-runner_${GITHUB_REF##*/}_linux_amd64.tar.gz script-exporter
     
-    - name: 'ls'
-      run: ls -l
+#    - name: 'ls'
+#      run: ls -l
     
-    - name: 'show release'
-      run: echo ${GITHUB_REF##*/}
+#    - name: 'show release'
+#      run: echo ${GITHUB_REF##*/}
       
-    - name: Create artifact
-      uses: montudor/action-zip@v0.1.0
-      with:
-        args: zip -X artifact/http-script-runner.zip script-exporter
+#    - name: Create artifact
+#      uses: montudor/action-zip@v0.1.0
+#      with:
+#        args: zip -X artifact/http-script-runner.zip script-exporter
+
     - name: Upload artifact
       uses: actions/upload-artifact@v2
       with:
           name: http-script-runner
-          path: artifact/http-script-runner.zip
+          path: http-script-runner_${GITHUB_REF##*/}_linux_amd64.tar.gz
+          
     - name: Upload to release
       uses: JasonEtco/upload-to-release@master
       with:
-        args: artifact/http-script-runner.zip application/zip
+        args: http-script-runner_${GITHUB_REF##*/}_linux_amd64.tar.gz application/tar+gzip
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
