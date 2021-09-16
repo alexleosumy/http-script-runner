@@ -50,12 +50,12 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
           name: http-script-runner
-          path: http-script-runner_${GITHUB_REF##*/}_linux_amd64.tar.gz
+          path: http-script-runner_${{ env.RELEASE_VERSION }}_linux_amd64.tar.gz
           
     - name: Upload to release
       uses: JasonEtco/upload-to-release@master
       with:
-        args: http-script-runner_${GITHUB_REF##*/}_linux_amd64.tar.gz application/tar+gzip
+        args: http-script-runner_${{ env.RELEASE_VERSION }}_linux_amd64.tar.gz application/tar+gzip
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
