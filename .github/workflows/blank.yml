@@ -52,6 +52,8 @@ jobs:
       uses: JasonEtco/upload-to-release@master
       with:
         args: artifact/http-script-runner.zip application/zip
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 #    - uses: ncipollo/release-action@v1
 #      with:
